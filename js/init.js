@@ -5,7 +5,7 @@
   "use strict";
   
   
-	var Resumo = {
+	let Resumo = {
 		
 		root: $(':root'),
 		
@@ -62,10 +62,10 @@
 		
 		typed: function(){
 			$('.animated_title').each(function(){
-				var span		= $(this);
-				var items		= span.find('.title_in');
+				let span		= $(this);
+				let items		= span.find('.title_in');
 				if(items !== ''){
-					var strings = [];
+					let strings = [];
 					items.each(function(){
 						strings.push($(this).text());
 					});
@@ -82,23 +82,23 @@
 		},
 		
 		modal: function(){
-			var self		= this;
-			var modalBox	= $('.vin_fn_modalbox');
-			var item		= $('.modal_item');
-			var closePopup	= modalBox.find('.closer,.extra_closer');
-			var prevNext	= modalBox.find('.fn__nav');
-			var extraCloser = modalBox.find('.extra_closer');
+			let self		= this;
+			let modalBox	= $('.vin_fn_modalbox');
+			let item		= $('.modal_item');
+			let closePopup	= modalBox.find('.closer,.extra_closer');
+			let prevNext	= modalBox.find('.fn__nav');
+			let extraCloser = modalBox.find('.extra_closer');
 			extraCloser.on('mouseenter',function(){
 				modalBox.addClass('hovered');
 			}).on('mouseleave',function(){
 				modalBox.removeClass('hovered');
 			});
 			item.on('click',function(){
-				var element		= $(this);
-				var content 	= element.find('.fn__hidden').html();
+				let element		= $(this);
+				let content 	= element.find('.fn__hidden').html();
 				
 				
-				var items		= element.closest('.modal_items'),
+				let items		= element.closest('.modal_items'),
 					index		= element.attr('data-index'),
 					from		= items.attr('data-from');
 				prevNext.attr('data-index',index);
@@ -125,13 +125,13 @@
 		},
 		
 		modal_prevnext: function(prevNext,modalBox){
-			var self		= this;
+			let self		= this;
 			prevNext.find('a').off().on('click',function(){
-				var e		= $(this);
-				var from 	= prevNext.attr('data-from');
-				var index	= parseInt(prevNext.attr('data-index'));
-				var itemss	= $('.modal_items[data-from="'+from+'"]');
-				var count	= parseInt(itemss.attr('data-count'));
+				let e		= $(this);
+				let from 	= prevNext.attr('data-from');
+				let index	= parseInt(prevNext.attr('data-index'));
+				let itemss	= $('.modal_items[data-from="'+from+'"]');
+				let count	= parseInt(itemss.attr('data-count'));
 				if(e.hasClass('prev')){
 					index--;
 				}else{
@@ -140,7 +140,7 @@
 				if(index < 1){index = count;}
 				if(index > count){index = 1;}
 				
-				var content = itemss.find('.modal_item[data-index="'+index+'"] .fn__hidden').html();
+				let content = itemss.find('.modal_item[data-index="'+index+'"] .fn__hidden').html();
 				prevNext.removeClass('disabled');
 				prevNext.attr('data-index',index);
 				
@@ -161,8 +161,8 @@
 		
 		scrollToAnchor: function(){
 			$('a[href^="#"]').not('[href="#"]').not('[href^="#tab"]').on('click',function(){
-				var element = $(this);
-				var section	= $(element.attr('href'));
+				let element = $(this);
+				let section	= $(element.attr('href'));
 				if(section.length){
 					$("html, body").animate({ 
 						scrollTop: section.offset().top
@@ -188,8 +188,8 @@
 		},
 		
 		changeWidth: function(){
-			var scrolltop	= $(window).scrollTop();
-			var action		= 0;
+			let scrolltop	= $(window).scrollTop();
+			let action		= 0;
 			if(scrolltop > 0 && !$('body').hasClass('scrolled')){
 				$('body').addClass('scrolled');
 				action++;
@@ -209,14 +209,14 @@
 		
 		contactForm: function(){
 			$('#send_message').on('click', function(){
-				var form		= $('.vin_fn_contact .contact_form');
-				var name 		= $("#name").val();
-				var email 		= $("#email").val();
-				var message 	= $("#message").val();
-				var phone 		= $("#phone").val();
-				var spanSuccess	= form.find(".success");
-				var success     = spanSuccess.data('success');
-				var emailto     = form.data('email');
+				let form		= $('.vin_fn_contact .contact_form');
+				let name 		= $("#name").val();
+				let email 		= $("#email").val();
+				let message 	= $("#message").val();
+				let phone 		= $("#phone").val();
+				let spanSuccess	= form.find(".success");
+				let success     = spanSuccess.data('success');
+				let emailto     = form.data('email');
 
 				spanSuccess.empty();
 				if(name === ''|| email === ''|| message === '' || emailto === '' || phone === ''){
@@ -249,8 +249,8 @@
 		
 		movingPlaceholder: function(){
 			$('.vin_fn_contact .input_wrapper').each(function(){
-				var e		= $(this);
-				var input 	= e.find('input, textarea');
+				let e		= $(this);
+				let input 	= e.find('input, textarea');
 				if(input.val() === ''){e.removeClass('active');}
 				input.on('focus', function() {
 				  	e.addClass('active');
@@ -262,8 +262,8 @@
 		
 		loadBlogPosts: function(){
 			$('.vin_fn_blog_list .load_more a').on('mousedown',function(){
-				var element 	= $(this);
-				var text 		= element.find('.text');
+				let element 	= $(this);
+				let text 		= element.find('.text');
 				// stop function if don't have more items
 				if(element.hasClass('done')){
 					element.addClass('hold');
@@ -271,8 +271,8 @@
 					return false;
 				}
 			}).on('mouseup',function(){
-				var element 	= $(this);
-				var text 		= element.find('.text');
+				let element 	= $(this);
+				let text 		= element.find('.text');
 				// stop function if don't have more items
 				if(element.hasClass('done')){
 					element.removeClass('hold');
@@ -280,8 +280,8 @@
 					return false;
 				}
 			}).on('mouseleave',function(){
-				var element 	= $(this);
-				var text 		= element.find('.text');
+				let element 	= $(this);
+				let text 		= element.find('.text');
 				// stop function if don't have more items
 				if(element.hasClass('done')){
 					element.removeClass('hold');
@@ -290,8 +290,8 @@
 				}
 			});
 			$('.vin_fn_blog_list .load_more a').on('click',function(){
-				var element 	= $(this);
-				var text 		= element.find('.text');
+				let element 	= $(this);
+				let text 		= element.find('.text');
 				
 				// stop function if elements are loading right now
 				if(element.hasClass('loading') || element.hasClass('done')){return false;}
@@ -301,7 +301,7 @@
 				
 				
 				setTimeout(function(){
-					var listItem = element.closest('.vin_fn_blog_list').find('.be_animated');
+					let listItem = element.closest('.vin_fn_blog_list').find('.be_animated');
 					listItem.each(function(i, e){
 						setTimeout(function(){
 							$(e).addClass('fadeInTop done');
@@ -317,10 +317,10 @@
 		},
 		
 		testimonialCarousel: function(){
-			var owl 		= $('.vin_fn_testimonials .owl-carousel');
+			let owl 		= $('.vin_fn_testimonials .owl-carousel');
 			owl.each(function(){
-				var el 		= $(this);
-				var parent	= el.closest('.vin_fn_testimonials');
+				let el 		= $(this);
+				let parent	= el.closest('.vin_fn_testimonials');
 				el.owlCarousel({
 					autoplay: true,
 					autoplayTimeout: 7000,
@@ -336,8 +336,8 @@
 					el.trigger('stop.owl.autoplay');
 					el.trigger('play.owl.autoplay');
 				});
-				var prev = parent.find('.my__nav .prev');
-				var next = parent.find('.my__nav .next');
+				let prev = parent.find('.my__nav .prev');
+				let next = parent.find('.my__nav .next');
 				prev.off().on('click',function(){
 					el.trigger('prev.owl');
 					return false;
@@ -352,10 +352,10 @@
 		},
 		
 		portfolioCarousel: function(){
-			var owl 		= $('#portfolio .owl-carousel');
+			let owl 		= $('#portfolio .owl-carousel');
 			owl.each(function(){
-				var el 		= $(this);
-				var parent	= el.closest('#portfolio');
+				let el 		= $(this);
+				let parent	= el.closest('#portfolio');
 				el.owlCarousel({
 					autoplay: true,
 					autoplayTimeout: 7000,
@@ -382,8 +382,8 @@
 					el.trigger('stop.owl.autoplay');
 					el.trigger('play.owl.autoplay');
 				});
-				var prev = parent.find('.my__nav .prev');
-				var next = parent.find('.my__nav .next');
+				let prev = parent.find('.my__nav .prev');
+				let next = parent.find('.my__nav .next');
 				prev.off().on('click',function(){
 					el.trigger('prev.owl');
 					return false;
@@ -398,13 +398,13 @@
 		},
 		
 		cursor: function () {
-			var myCursor = $('.frenify-cursor');
+			let myCursor = $('.frenify-cursor');
 			if (myCursor.length) {
 				const 	e = document.querySelector(".cursor-inner"),
 						t = document.querySelector(".cursor-outer");
-				var n, i = 0, o = !1;
-				var buttons = "a, input[type='submit'], .cursor-link, button, .modal_item";
-				var sliders = ".owl-carousel, .swiper-container, .cursor-link";
+				let n, i = 0, o = !1;
+				let buttons = "a, input[type='submit'], .cursor-link, button, .modal_item";
+				let sliders = ".owl-carousel, .swiper-container, .cursor-link";
 				// link mouse enter + move
 				window.onmousemove = function(s) {
 					o || (t.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)"), e.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)", n = s.clientY, i = s.clientX
@@ -446,17 +446,17 @@
 		
 		progress: function(){
 			$('.vin_fn_progress_bar').each(function() {
-				var pWrap 	= $(this);
+				let pWrap 	= $(this);
 				pWrap.waypoint({handler: function(){Resumo.progressF(pWrap);},offset:'90%'});
 			});
 		},
 		
 		progressF: function(container){
 			container.find('.progress_item').each(function(i) {
-				var progress 	= $(this);
-				var pValue 		= parseInt(progress.data('value'));
-				var percent 	= progress.find('.progress_percent');
-				var pBar 		= progress.find('.progress_bg');
+				let progress 	= $(this);
+				let pValue 		= parseInt(progress.data('value'));
+				let percent 	= progress.find('.progress_percent');
+				let pBar 		= progress.find('.progress_bg');
 				pBar.css({width:pValue+'%'});
 				setTimeout(function(){
 					progress.addClass('open');
@@ -474,9 +474,9 @@
 		
 		tabs: function(){
 			$('.vin_fn_tabs .tab_header a').off().on('click',function(){
-				var e 			= $(this);
-				var li			= e.parent();
-				var tabs		= e.closest('.vin_fn_tabs');
+				let e 			= $(this);
+				let li			= e.parent();
+				let tabs		= e.closest('.vin_fn_tabs');
 				if(li.hasClass('active')){
 					return false;
 				}else{
@@ -492,14 +492,14 @@
 		},
 		
 		rightNav: function(){
-			var closer 		= $('.vin_fn_navigation .closer,.vin_fn_nav_overlay');
-			var overlay		= $('.vin_fn_nav_overlay');
-			var opener 		= $('.vin_fn_right .menu_trigger');
-			var wrapper 	= $('.vin_fn_wrapper');
-			var navFooter	= $('.vin_fn_navigation .nav_footer');
-			var navLi		= $('#nav ul li');
-			var speed		= 200, transitionTime = 700;
-			var summary		= (navLi.length+1)*speed + transitionTime;
+			let closer 		= $('.vin_fn_navigation .closer,.vin_fn_nav_overlay');
+			let overlay		= $('.vin_fn_nav_overlay');
+			let opener 		= $('.vin_fn_right .menu_trigger');
+			let wrapper 	= $('.vin_fn_wrapper');
+			let navFooter	= $('.vin_fn_navigation .nav_footer');
+			let navLi		= $('#nav ul li');
+			let speed		= 200, transitionTime = 700;
+			let summary		= (navLi.length+1)*speed + transitionTime;
 			opener.on('click',function(){
 				wrapper.addClass('nav-opened');
 				navLi.each(function(i,e){
@@ -526,10 +526,10 @@
 		},
 		
 		rightPanelScroll: function(){
-			var rightPanel 	= $('.vin_fn_right .right_in');
-			var navIn 		= $('.vin_fn_navigation .nav_in');
-			var nav 		= $('#nav');
-			var navFooter	= $('.vin_fn_navigation .nav_footer');
+			let rightPanel 	= $('.vin_fn_right .right_in');
+			let navIn 		= $('.vin_fn_navigation .nav_in');
+			let nav 		= $('#nav');
+			let navFooter	= $('.vin_fn_navigation .nav_footer');
 			rightPanel.css({height: $(window).height()});
 			nav.css({height: navIn.height() - navFooter.outerHeight()});
 			if($().niceScroll){
@@ -551,12 +551,12 @@
 		
 		imgToSVG: function(){
 			$('img.fn__svg').each(function(){
-				var img 		= $(this);
-				var imgClass	= img.attr('class');
-				var imgURL		= img.attr('src');
+				let img 		= $(this);
+				let imgClass	= img.attr('class');
+				let imgURL		= img.attr('src');
 
 				$.get(imgURL, function(data) {
-					var svg 	= $(data).find('svg');
+					let svg 	= $(data).find('svg');
 					if(typeof imgClass !== 'undefined') {
 						svg 	= svg.attr('class', imgClass+' replaced-svg');
 					}
@@ -568,18 +568,18 @@
 		},
 
 	  	BgImg: function(){
-			var div = $('*[data-bg-img]');
+			let div = $('*[data-bg-img]');
 			div.each(function(){
-				var element = $(this);
-				var attrBg	= element.attr('data-bg-img');
+				let element = $(this);
+				let attrBg	= element.attr('data-bg-img');
 				if(typeof(attrBg) !== 'undefined'){
 					element.css({backgroundImage:'url('+attrBg+')'});
 				}
 			});
-			var div2 = $('*[data-fn-bg-img]');
+			let div2 = $('*[data-fn-bg-img]');
 			div2.each(function(){
-				var element = $(this);
-				var attrBg	= element.attr('data-fn-bg-img');
+				let element = $(this);
+				let attrBg	= element.attr('data-fn-bg-img');
 				if(typeof(attrBg) !== 'undefined'){
 					element.css({backgroundImage:'url('+attrBg+')'});
 				}
